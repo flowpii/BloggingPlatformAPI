@@ -9,8 +9,9 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT p FROM Post p WHERE " +
-            "LOWER(p.title) LIKE LOWER(CONCAT('%', :term, '%')) OR " +  // 修复括号
+            "LOWER(p.title) LIKE LOWER(CONCAT('%', :term, '%')) OR " +
             "LOWER(p.content) LIKE LOWER(CONCAT('%', :term, '%')) OR " +
-            "LOWER(p.category) LIKE LOWER(CONCAT('%', :term, '%'))")
+            "LOWER(p.category) LIKE LOWER(CONCAT('%', :term, '%')) OR " +
+            "EXISTS (SELECT t FROM p.tags t WHERE LOWER(t) LIKE LOWER(CONCAT('%', :term, '%')))")
     List<Post> searchPosts(@Param("term") String term);
 }

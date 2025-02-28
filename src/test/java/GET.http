@@ -1,2 +1,2 @@
-GET http://localhost:8080/api/posts
+GET http://localhost:8080/api/posts?term=abb
 Content-Type: application/json
