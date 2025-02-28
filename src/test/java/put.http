@@ -1,0 +1,9 @@
+PUT http://localhost:8080/api/posts/1
+Content-Type: application/json
+
+{
+  "title": "My Updated Blog Post",
+  "content": "This is the updated content of my first blog post.",
+  "category": "Technology",
+  "tags": ["Tech", "Programming"]
+}
